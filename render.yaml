@@ -7,4 +7,4 @@ services:
     region: frankfurt
     branch: main
     buildCommand: ""
-    startCommand: "n8n start"
+    
