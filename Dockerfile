@@ -5,12 +5,10 @@ FROM docker.n8n.io/n8nio/n8n
 USER root
 
 # Install Docker CLI and ffmpeg
-RUN apk add --no-cache \
-    ca-certificates \
-    Docker CLI \
-    ffmpeg \
-    openssl \
-    aria2
+RUN apk add --no-cache ca-certificates
+RUN apk add --no-cache Docker CLI 
+RUN apk add --no-cache ffmpeg 
+RUN apk add --no-cache openssl 
 
 RUN apk add yt-dlp
 
