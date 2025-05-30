@@ -6,7 +6,7 @@ USER root
 
 # Install Docker CLI and ffmpeg
 RUN apk add --no-cache ca-certificates
-RUN apk add --no-cache Docker CLI 
+# RUN apk add --no-cache Docker CLI 
 RUN apk add --no-cache ffmpeg 
 RUN apk add --no-cache openssl 
 
