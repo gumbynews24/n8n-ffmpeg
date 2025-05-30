@@ -5,6 +5,6 @@ FROM docker.n8n.io/n8nio/n8n
 USER root
 
 # Install Docker CLI and ffmpeg
-RUN apk add --no-cache docker-cli ffmpeg
+RUN apk add ffmpeg
 
 
