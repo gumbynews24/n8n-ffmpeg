@@ -4,46 +4,43 @@ FROM docker.n8n.io/n8nio/n8n
 # Switch to root to install packages
 USER root
 
-# Install Docker CLI and ffmpeg
-RUN apk add --no-cache ca-certificates
-# RUN apk add --no-cache Docker CLI 
-RUN apk add --no-cache ffmpeg 
-RUN apk add --no-cache openssl 
-
-RUN apk add yt-dlp
-
-# Install Python build dependencies required by kokoro-tts and its packages
+# Install system dependencies for building Python packages and audio libraries
 RUN apk add --no-cache \
-    gcc \
-    g++ \
-    musl-dev \
-    libffi-dev \
-    python3-dev \
+    git \
+    python3 \
     py3-pip \
-    py3-setuptools \
-    libstdc++ \
+    python3-dev \
+    build-base \
+    libffi-dev \
+    portaudio-dev \
+    alsa-lib-dev \
+    ffmpeg \
+    openssl \
     libjpeg-turbo-dev \
     zlib-dev \
     freetype-dev \
     openblas-dev \
-    portaudio-dev \
-    alsa-lib-dev \
-    ffmpeg \
-    git
+    cmake \
+    espeak-ng \
+    wget \
+    bash \
+    yt-dlp
 
-# Install Python packages required by kokoro-tts
-RUN pip install --upgrade pip && pip install --no-cache-dir \
-    beautifulsoup4 \
-    ebooklib \
-    PyMuPDF \
-    kokoro-onnx==0.3.9 \
-    pymupdf4llm \
-    sounddevice \
-    soundfile
+# Upgrade pip and setuptools
+RUN pip install --upgrade pip setuptools
 
-# Download voice and model files
-RUN wget https://github.com/nazdridoy/kokoro-tts/releases/download/v1.0.0/voices-v1.0.bin
-RUN wget https://github.com/nazdridoy/kokoro-tts/releases/download/v1.0.0/kokoro-v1.0.onnx
+# Clone kokoro-tts repository
+RUN git clone https://github.com/nazdridoy/kokoro-tts.git /kokoro-tts
+
+# Set working directory
+WORKDIR /kokoro-tts
+
+# Install Python dependencies from requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Download model files
+RUN wget https://github.com/nazdridoy/kokoro-tts/releases/download/v1.0.0/voices-v1.0.bin && \
+    wget https://github.com/nazdridoy/kokoro-tts/releases/download/v1.0.0/kokoro-v1.0.onnx
 
 # Optional: Clone the kokoro-tts repo (if needed for code)
 # RUN git clone https://github.com/gumbynews24/kokoro-tts.git
