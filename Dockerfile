@@ -27,21 +27,7 @@ RUN apk add --no-cache \
     bash \
     yt-dlp
 
-# Upgrade pip and setuptools
-#UN pipx install --upgrade pip setuptools
 
 # Clone kokoro-tts repository
-RUN git clone https://github.com/nazdridoy/kokoro-tts.git /kokoro-tts
-
-# Set working directory
-WORKDIR /kokoro-tts
-
-# Install Python dependencies from requirements.txt
-RUN pipx install -r requirements.txt
-
-# Download model files
-RUN wget https://github.com/nazdridoy/kokoro-tts/releases/download/v1.0.0/voices-v1.0.bin && \
-    wget https://github.com/nazdridoy/kokoro-tts/releases/download/v1.0.0/kokoro-v1.0.onnx
-
-# Optional: Clone the kokoro-tts repo (if needed for code)
-# RUN git clone https://github.com/gumbynews24/kokoro-tts.git
+#RUN git clone https://github.com/nazdridoy/kokoro-tts.git
+# WORKDIR /kokoro-tts
