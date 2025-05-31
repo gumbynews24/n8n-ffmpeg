@@ -13,7 +13,7 @@ RUN apk add --no-cache openssl
 RUN apk add yt-dlp
 
 # Install KOKORO-TTS (Text to Speech)
-RUN git clone https://github.com/gumbynews24/kokoro-tts.git 
+#RUN git clone https://github.com/gumbynews24/kokoro-tts.git 
 RUN apt-get install -y beautifulsoup4 \
 ebooklib \
 PyMuPDF \
