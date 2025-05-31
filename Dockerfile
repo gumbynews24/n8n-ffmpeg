@@ -14,8 +14,9 @@ RUN apk add yt-dlp
 
 # Install KOKORO-TTS (Text to Speech)
 RUN git clone https://github.com/gumbynews24/kokoro-tts.git && \
-cd kokoro-tts && \
-pip install -r requirements.txt
+cd kokoro-tts
+RUN pip install -r requirements.txt
+#cd .. && rm kokoro-tts
 
 RUN wget https://github.com/nazdridoy/kokoro-tts/releases/download/v1.0.0/voices-v1.0.bin
 RUN wget https://github.com/nazdridoy/kokoro-tts/releases/download/v1.0.0/kokoro-v1.0.onnx
