@@ -28,7 +28,7 @@ RUN apk add --no-cache \
     yt-dlp
 
 # Upgrade pip and setuptools
-RUN pipx install --upgrade pip setuptools
+#UN pipx install --upgrade pip setuptools
 
 # Clone kokoro-tts repository
 RUN git clone https://github.com/nazdridoy/kokoro-tts.git /kokoro-tts
