@@ -37,7 +37,7 @@ RUN git clone https://github.com/nazdridoy/kokoro-tts.git /kokoro-tts
 WORKDIR /kokoro-tts
 
 # Install Python dependencies from requirements.txt
-RUN pipx install --no-cache-dir -r requirements.txt
+RUN pipx install -r requirements.txt
 
 # Download model files
 RUN wget https://github.com/nazdridoy/kokoro-tts/releases/download/v1.0.0/voices-v1.0.bin && \
