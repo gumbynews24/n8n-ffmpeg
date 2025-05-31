@@ -13,17 +13,15 @@ RUN apk add --no-cache openssl
 RUN apk add yt-dlp
 
 # Install KOKORO-TTS (Text to Speech)
-RUN git clone https://github.com/gumbynews24/kokoro-tts.git && \
-cd kokoro-tts
-RUN apt-get update && apt-get install -y --no-install-recommends \
-beautifulsoup4 \
+RUN git clone https://github.com/gumbynews24/kokoro-tts.git 
+RUN RUN apk add --no-cache beautifulsoup4 \
 ebooklib \
 PyMuPDF \
 kokoro-onnx==0.3.9 \
 pymupdf4llm \
 sounddevice \
-soundfile \
-cd .. && rm kokoro-tts
+soundfile 
+
 
 RUN wget https://github.com/nazdridoy/kokoro-tts/releases/download/v1.0.0/voices-v1.0.bin
 RUN wget https://github.com/nazdridoy/kokoro-tts/releases/download/v1.0.0/kokoro-v1.0.onnx
