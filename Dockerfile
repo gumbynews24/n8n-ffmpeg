@@ -10,9 +10,6 @@ RUN apk add --no-cache \
     openssl \
     yt-dlp
 
-# Install Python and other dependencies (example)
-RUN apk add python py3-pip
-
 # Install Kokoro-onnx (assuming that's the relevant package)
 RUN apk add kokoro-onnx
 
