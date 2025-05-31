@@ -10,15 +10,6 @@ RUN apk add --no-cache \
     openssl \
     yt-dlp
 
-# Install Kokoro-onnx (assuming that's the relevant package)
-RUN apk add kokoro-onnx
 
-# Download the model files (example, replace with the actual download command)
-RUN wget -q -O kokoro-v1.onnx https://github.com/nazdridoy/kokoro-tts/releases/download/v1.0.0/kokoro-v1.0.onnx
-RUN wget -q -O https://github.com/nazdridoy/kokoro-tts/releases/download/v1.0.0/voices-v1.0.bin
-
-# Clone kokoro-tts repository
-# RUN git clone https://github.com/nazdridoy/kokoro-tts.git
-# WORKDIR /kokoro-tts
 
 
